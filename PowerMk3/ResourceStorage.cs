@@ -10,8 +10,6 @@ namespace PowerMk3
     {
         public Fuel Fuel { get; set; }
 
-
-
         public int energy;
 
         private static ResourceStorage _instance;
@@ -27,6 +25,19 @@ namespace PowerMk3
                 _instance = new ResourceStorage();
             }
             return _instance;
+        }
+        public double giveFuel(double consumption)
+        {
+            if (Fuel.coal >= consumption)
+            {
+                Fuel.coal -= consumption;
+                return consumption;
+            }
+            
+            return Fuel.coal;
+
+
+           
         }
 
     }

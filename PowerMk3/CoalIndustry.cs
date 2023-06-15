@@ -10,7 +10,7 @@ namespace PowerMk3
     {
         int energyPerPlantPerDay = 7;
         double productionPerMinePerDay = 40;
-        double consumptionPerPlantPerDay = 100;
+        public double consumptionPerPlantPerDay = 100;
 
         public int qtyMines { get; set; }
         public int qtyPowePlants { get; set; }
