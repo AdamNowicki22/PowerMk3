@@ -15,7 +15,7 @@ namespace PowerMk3
         int qtyMines { get; set; }
         int qtyPowePlants { get; set; }
 
-        public double mineFuel(int days = 30);
+        public double minedFuel(int days = 30);
 
         public double fuelConsumptionTotal(int days = 30);
         public int energyFromFuel(int days = 30);

@@ -19,7 +19,7 @@ namespace PowerMk3
             this.qtyMines = qtyMines;
             this.qtyPowePlants = qtyPowePlants;
         }
-        public double mineFuel(int days = 30)
+        public double minedFuel(int days = 30)
         {
             return productionPerMinePerDay*qtyMines*days;
         }
@@ -27,9 +27,28 @@ namespace PowerMk3
         {
             return consumptionPerPlantPerDay*qtyPowePlants*days;
         }
+
         public int energyFromFuel(int days = 30)
         {
-            return energyPerPlantPerDay*qtyPowePlants*days;
+            return minedFuel(days)>= fuelConsumptionTotal(days)?energyWhenEnoughResouces(days):energyWhenNotEnoughResouces(days);
+        }
+
+        private int energyWhenEnoughResouces(int days = 30)
+        {
+            return energyPerPlantPerDay * qtyPowePlants * days;
+        }
+
+        private int energyWhenNotEnoughResouces(int days = 30)
+        {
+            return (int)Math.Floor((productionPerMinePerDay * qtyMines * days/consumptionPerPlantPerDay)* energyPerPlantPerDay);
+        }
+
+        public double unusedFuel(int days = 30)
+        {
+            return minedFuel(days) >= fuelConsumptionTotal(days) ?
+                minedFuel(days) - fuelConsumptionTotal(days) : 0;
+                //minedFuel(days) - ((int)Math.Floor((productionPerMinePerDay * qtyMines * days) /consumptionPerPlantPerDay));
+                //it look like atrocity and does not work
         }
 
 

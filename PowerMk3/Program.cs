@@ -5,18 +5,14 @@
         static void Main(string[] args)
         {
             ResourceStorage resourceStorage = ResourceStorage.GetInstance();
+            CoalIndustry coalIndustry = new CoalIndustry(9, 2);
 
-            CoalIndustry coalIndustry = new CoalIndustry(10, 2);
-
-            resourceStorage.Fuel.coal = coalIndustry.mineFuel();
-
-            double storedCoal=resourceStorage.giveFuel(coalIndustry.fuelConsumptionTotal());
+            resourceStorage.Fuel.coal = coalIndustry.unusedFuel();
+            double storedCoal = resourceStorage.Fuel.coal;
             resourceStorage.energy += coalIndustry.energyFromFuel();
-            
 
-
-            Console.WriteLine(storedCoal);
-            Console.WriteLine(resourceStorage.energy);
+            Console.WriteLine($"Our spare supply of coal is {storedCoal} units");
+            Console.WriteLine($"Produced energy is {resourceStorage.energy} units");
 
 
 

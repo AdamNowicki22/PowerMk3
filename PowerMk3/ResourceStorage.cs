@@ -26,7 +26,7 @@ namespace PowerMk3
             }
             return _instance;
         }
-        public double giveFuel(double consumption)
+        public double giveCoal(double consumption)
         {
             if (Fuel.coal >= consumption)
             {
@@ -34,10 +34,7 @@ namespace PowerMk3
                 return consumption;
             }
             
-            return Fuel.coal;
-
-
-           
+            return Fuel.coal;   
         }
 
     }
